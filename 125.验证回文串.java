@@ -6,10 +6,8 @@
 
 // @lc code=start
 class Solution {
-    // A man, a plan, a canal: Panama
-    // true
-    // 双指针
-    public boolean isPalindrome(String s) {
+
+    public boolean isPalindrome2(String s) {
         int start = 0;
         int end = s.length() - 1;
         while(start < end) {
