@@ -1,0 +1,50 @@
+class Solution {
+
+    // "  "
+    // " -1"
+    // "-42"
+    public int strToInt(String str) {
+        int n = str.length();
+        int i = 0;
+        while(i < n && str.charAt(i) == ' ') {
+            i++;
+        }
+        // 字符串为空
+        if (i == n) {
+            return 0;
+        }
+        int sign = 1;
+        // 处理第一个字母是“-”号
+        if(isNegative(str.charAt(i))){
+            i++;
+            sign = -1;
+        }else if (isPositive(str.charAt(i))){
+            i++;
+        }
+
+        int result = 0;
+        // 进行数字运算
+        while(i < n && isDigit(str.charAt(i))) {
+            if (result > 214748364 || (result == 214748364) && (str.charAt(i) - '0') > 7){
+                return  sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            }
+            result = result * 10 + (str.charAt(i) - '0');
+            i++;
+        }
+        return sign * result;
+    }
+
+    private boolean isDigit(char c) {
+        return Character.isDigit(c);
+    }
+
+    private boolean isNegative(char c){
+        return c == '-';
+    }
+
+    private boolean isPositive(char c){
+        return c == '+';
+    }
+
+
+}
