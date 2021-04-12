@@ -14,8 +14,16 @@
  * }
  */
 class Solution {
+    // 有感觉，第一直觉是快慢指针
+    // 边界条件：偶数和奇数
     public ListNode middleNode(ListNode head) {
-
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast != null && fast.next !=null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
     }
 }
 // @lc code=end
