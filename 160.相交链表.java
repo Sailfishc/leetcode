@@ -18,7 +18,24 @@
  */
 public class Solution {
     // 这个思路真的是很难想到，最常见的是Hash表的思路
+
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        Set<ListNode> set = new HashSet<>();
+        while(headA != null){
+            set.add(headA);
+            headA = headA.next;
+        }
+        while(headB != null){
+            if(set.contains(headB)){
+                return headB;
+            }
+            headB = headB.next;
+        }
+        return null;
+    }
+
+
+    public ListNode getIntersectionNode2(ListNode headA, ListNode headB) {
         ListNode h1 = headA;
         ListNode h2 = headB;
         while(h1 != h2) {
