@@ -16,6 +16,8 @@
  * }
  */
 class Solution {
+
+
     // 1,1,2  
     /**
      * 特殊情况：
@@ -42,6 +44,35 @@ class Solution {
             }
         }
         return dummy.next;
+    }
+
+
+    // 1,1,2  
+    /**
+     * 特殊情况：
+     *      1. 链表为空
+     *      2. 链表只有一个元素
+     * 思路：
+     *      对比当前元素和下一个元素是否一致，如果一致，则删除后面的元素
+     */
+    public ListNode deleteDuplicates2(ListNode head) {
+        if(head == null || head.next == null ){
+            return head;
+        }
+        ListNode newHead = null;
+        ListNode tail = null;
+        while(head != null) {
+            if(newHead == null) {
+                newHead  =  tail = new ListNode(head.val);
+            }else {
+                if(tail.val != head.val) {
+                    tail.next = new ListNode(head.val);
+                    tail = tail.next;
+                }
+            }
+            head = head.next;
+        }
+        return newHead;
     }
 }
 // @lc code=end

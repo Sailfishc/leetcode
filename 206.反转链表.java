@@ -16,13 +16,26 @@
  * }
  */
 class Solution {
+
+    public ListNode reverseList(ListNode head) {
+        if(head == null || head.next == null){
+            return head;
+        }
+
+        ListNode node = reverseList(head.next);
+        head.next = head.next.next;
+        head.next = null;
+        return head;
+    }
+
+    
     // 1->2->3->4->5->NULL
     // 5->4->3->2->1->NULL
     /**
      * 思路：  1->2 变成 2->1的过程应该是  1->null,  2->1
      * 终止条件：
      */
-    public ListNode reverseList(ListNode head) {
+    public ListNode reverseList2(ListNode head) {
         ListNode pre = null;
         ListNode cur = head;
         while(cur != null) {
